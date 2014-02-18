@@ -119,5 +119,17 @@ namespace XantecExt
 			EtceteraAndroid.askForReviewNow( "Do you like this game?", "Please review the game if you do!" );
 			#endif
 		}
+
+		public static void showAlert(string title, string message, string buttonTitle)
+		{
+			#if UNITY_IPHONE
+			EtceteraBinding.showAlertWithTitleMessageAndButton(title, message, buttonTitle);
+			#endif
+			
+			#if UNITY_ANDROID
+			EtceteraAndroid.showAlert(title, message, buttonTitle);
+			#endif
+		}
+	}
 	}
 }
