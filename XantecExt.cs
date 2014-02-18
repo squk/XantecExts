@@ -131,5 +131,40 @@ namespace XantecExt
 			#endif
 		}
 	}
+	
+	public class XIAP
+	{
+		public static void Init(string key)
+		{
+			#if UNITY_IPHONE
+			//init not required for iOS
+			#endif
+			
+			#if UNITY_ANDROID
+			IABAndroid.init(key);
+			#endif
+		}
+		
+		public static void purchaseProduct(string productID)
+		{
+			#if UNITY_IPHONE
+			StoreKitBinding.purchaseProduct(productID, 1);
+			#endif
+			
+			#if UNITY_ANDROID
+			IABAndroid.purchaseProduct(productID);
+			#endif
+		}
+		
+		public static void purchaseProduct(string[] productID)
+		{
+			#if UNITY_IPHONE
+			StoreKitBinding.purchaseProduct(productID[0], 1);
+			#endif
+			
+			#if UNITY_ANDROID
+			IABAndroid.purchaseProduct(productID[1]);
+			#endif
+		}
 	}
 }
